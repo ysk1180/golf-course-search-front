@@ -1,14 +1,26 @@
 import React from 'react';
 import axios from 'axios';
+import DatePicker from "react-datepicker"
+import "react-datepicker/dist/react-datepicker.css"
 
 class App extends React.Component {
-  state = { budget: '10000', departure: '二子玉川駅', courses_names: [] }
+  state = { date: '', budget: '10000', departure: '二子玉川駅', courses_names: [] }
+
+  componentDidMount() {
+    let date = new Date();
+    date.setDate(date.getDate() + 14);
+    this.setState({ date: date })
+  }
 
   onFormSubmit = async (event) => {
     event.preventDefault();
 
+    const date = this.state.date
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
     const response = await axios.get('http://localhost:3001/search', {
-      params: { budget: this.state.budget, departure: this.state.departure }
+      params: { date: `${year}-${month}-${day}`, budget: this.state.budget, departure: this.state.departure }
     });
 
     this.setState({ courses_names: response.data.course_names })
@@ -23,6 +35,12 @@ class App extends React.Component {
       <div>
         <div>
           <form onSubmit={this.onFormSubmit}>
+            <div>
+              <DatePicker
+                selected={this.state.date}
+                onChange={e => this.setState({ date: e})}
+              />
+            </div>
             <div>
               <select value={this.state.badget} onChange={e => this.setState({ budget: e.target.value })}>
                 <option value="10000">10000</option>
