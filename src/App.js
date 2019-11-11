@@ -4,7 +4,7 @@ import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
 
 class App extends React.Component {
-  state = { date: '', budget: '10000', departure: '二子玉川駅', courses_names: [] }
+  state = { date: '', budget: '10000', departure: '二子玉川駅', duration: '90', courses_names: [] }
 
   componentDidMount() {
     let date = new Date();
@@ -20,7 +20,7 @@ class App extends React.Component {
     const month = date.getMonth() + 1;
     const day = date.getDate();
     const response = await axios.get('http://localhost:3001/search', {
-      params: { date: `${year}-${month}-${day}`, budget: this.state.budget, departure: this.state.departure }
+      params: { date: `${year}-${month}-${day}`, budget: this.state.budget, departure: this.state.departure, duration: this.state.duration }
     });
 
     this.setState({ courses_names: response.data.course_names })
@@ -49,6 +49,12 @@ class App extends React.Component {
             </div>
             <div>
               <input type="text" value={this.state.departure} onChange={e => this.setState({ departure: e.target.value })} />
+            </div>
+            <div>
+              <select value={this.state.duration} onChange={e => this.setState({ duration: e.target.value })}>
+                <option value="90">90分</option>
+                <option value="60">60分</option>
+              </select>
             </div>
             <div>
               <input type="submit" />
