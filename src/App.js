@@ -36,6 +36,9 @@ class App extends React.Component {
           <p>{course.plan_name}</p>
           <p>{course.price}</p>
           <p>{course.duration}</p>
+          <a href={course.reserve_url_pc}>予約ページ＜PC＞</a>
+          <a href={course.reserve_url_mobile}>予約ページ＜モバイル＞</a>
+          <img src={course.image_url} />
         </div>
       )
     });
