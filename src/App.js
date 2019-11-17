@@ -4,7 +4,7 @@ import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
 
 class App extends React.Component {
-  state = { date: '', budget: '10000', departure: '二子玉川駅', duration: '90', courses_names: [] }
+  state = { date: '', budget: '10000', departure: '二子玉川駅', duration: '90', courses: [] }
 
   componentDidMount() {
     let date = new Date();
@@ -23,12 +23,20 @@ class App extends React.Component {
       params: { date: `${year}-${month}-${day}`, budget: this.state.budget, departure: this.state.departure, duration: this.state.duration }
     });
 
-    this.setState({ courses_names: response.data.course_names })
+    this.setState({ courses: response.data.courses })
   }
 
   render() {
-    const names = this.state.courses_names.map(name => {
-      return <p>{name}</p>
+    const plans = this.state.courses.map(course => {
+      return (
+        <div>
+          <p>{course.name}</p>
+          <p>{course.caption}</p>
+          <p>{course.prefecture}</p>
+          <p>{course.plan_name}</p>
+          <p>{course.price}</p>
+        </div>
+      )
     });
 
     return (
@@ -62,7 +70,7 @@ class App extends React.Component {
           </form>
         </div>
         <div>
-          {names}
+          {plans}
         </div>
       </div>
     );
