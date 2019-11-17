@@ -35,6 +35,7 @@ class App extends React.Component {
           <p>{course.prefecture}</p>
           <p>{course.plan_name}</p>
           <p>{course.price}</p>
+          <p>{course.duration}</p>
         </div>
       )
     });
