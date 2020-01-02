@@ -19,9 +19,10 @@ class App extends React.Component {
     const year = date.getFullYear();
     const month = date.getMonth() + 1;
     const day = ("0" + date.getDate()).slice(-2);
-    const response = await axios.get('http://localhost:3001/search', {
-      params: { date: `${year}-${month}-${day}`, budget: this.state.budget, departure: this.state.departure, duration: this.state.duration }
-    });
+    const response = await axios.get('https://api.myjson.com/bins/14pcw0');
+    // const response = await axios.get('http://localhost:3001/search', {
+    //   params: { date: `${year}-${month}-${day}`, budget: this.state.budget, departure: this.state.departure, duration: this.state.duration }
+    // });
 
     this.setState({ courses: response.data.courses })
   }
