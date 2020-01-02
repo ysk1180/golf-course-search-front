@@ -1,10 +1,10 @@
 import React from 'react';
 import axios from 'axios';
-import DatePicker from "react-datepicker"
-import "react-datepicker/dist/react-datepicker.css"
 
+import Navbar from './Navbar.js';
 import Result from './Result.js';
-import style from './Home.css';
+import { Icon, Image, Statistic } from 'semantic-ui-react'
+import './Common.css';
 
 class Home extends React.Component {
   state = { date: '', budget: '10000', departure: '二子玉川駅', duration: '90', courses: [] }
@@ -32,39 +32,48 @@ class Home extends React.Component {
 
   render() {
     return (
-      <div>
-        <div>
-          <form onSubmit={this.onFormSubmit}>
-            <div>
-              <DatePicker
-                selected={this.state.date}
-                onChange={e => this.setState({ date: e})}
-              />
-            </div>
-            <div>
-              <select value={this.state.badget} onChange={e => this.setState({ budget: e.target.value })}>
-                <option value="10000">10000</option>
-                <option value="5000">5000</option>
-              </select>
-            </div>
-            <div>
-              <input type="text" value={this.state.departure} onChange={e => this.setState({ departure: e.target.value })} />
-            </div>
-            <div>
-              <select value={this.state.duration} onChange={e => this.setState({ duration: e.target.value })}>
-                <option value="90">90分</option>
-                <option value="60">60分</option>
-              </select>
-            </div>
-            <div>
-              <input type="submit" />
-            </div>
-          </form>
+      <>
+        <Navbar />
+        <div class="ui container">
+          <div class="Search__Form">
+            <form class="ui form segment" onSubmit={this.onFormSubmit}>
+              <div class="field">
+                <label>日付</label>
+                <input name="date" type="date" />
+              </div>
+              <div class="field">
+                <label>金額</label>
+                <select class="ui dropdown" name="dropdown">
+                  <option value="10000">10000</option>
+                  <option value="5000">5000</option>
+                </select>
+              </div>
+              <div class="field">
+                <label>場所</label>
+                <select class="ui dropdown" name="dropdown" value={this.state.departure} onChange={e => this.setState({ departure: e.target.value })}>
+                  <option value="nikotama">二子玉川駅</option>
+                </select>
+              </div>
+              <div class="field">
+                <label>所要時間</label>
+                <select class="ui dropdown" name="dropdown" value={this.state.duration} onChange={e => this.setState({ duration: e.target.value })}>
+                  <option value="90">90分</option>
+                  <option value="90">60分</option>
+                </select>
+              </div>
+              <div className="Search__Button">
+                <button type="submit" className="Search__Button__Design">
+                  ゴルフ場を検索する
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
-        <div>
+
+        <div class="ui cards">
           {this.state.courses.map(course => <Result course={course}/>)}
         </div>
-      </div>
+      </>
     );
   }
 }
