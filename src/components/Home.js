@@ -3,7 +3,10 @@ import axios from 'axios';
 import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
 
-class App extends React.Component {
+import Result from './Result.js';
+import style from './Home.css';
+
+class Home extends React.Component {
   state = { date: '', budget: '10000', departure: '二子玉川駅', duration: '90', courses: [] }
 
   componentDidMount() {
@@ -28,22 +31,6 @@ class App extends React.Component {
   }
 
   render() {
-    const plans = this.state.courses.map(course => {
-      return (
-        <div>
-          <p>{course.name}</p>
-          <p>{course.caption}</p>
-          <p>{course.prefecture}</p>
-          <p>{course.plan_name}</p>
-          <p>{course.price}</p>
-          <p>{course.duration}</p>
-          <a href={course.reserve_url_pc}>予約ページ＜PC＞</a>
-          <a href={course.reserve_url_mobile}>予約ページ＜モバイル＞</a>
-          <img src={course.image_url} />
-        </div>
-      )
-    });
-
     return (
       <div>
         <div>
@@ -75,11 +62,11 @@ class App extends React.Component {
           </form>
         </div>
         <div>
-          {plans}
+          {this.state.courses.map(course => <Result course={course}/>)}
         </div>
       </div>
     );
   }
 }
 
-export default App;
+export default Home;
