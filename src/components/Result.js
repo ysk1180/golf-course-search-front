@@ -9,7 +9,7 @@ const Result = ({ course }) => {
     <div class="wrapper">
       <div class="card radius shadowDepth1">
         <div class="card__image border-tlr-radius">
-          <img src="http://sallyaroundthebay.com/wp-content/uploads/2013/06/duck-Ernst-Vikne-300x300.jpg" alt="image" class="border-tlr-radius"/>
+          <image src="http://sallyaroundthebay.com/wp-content/uploads/2013/06/duck-Ernst-Vikne-300x300.jpg" alt="image" class="border-tlr-radius"/>
         </div>
 
         <div class="card__content card__padding">

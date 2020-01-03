@@ -1,13 +1,17 @@
 import React from 'react';
 import axios from 'axios';
+import ja from 'date-fns/locale/ja';
+import DatePicker, { registerLocale } from "react-datepicker"
+import "react-datepicker/dist/react-datepicker.css"
 
 import Navbar from './Navbar.js';
 import Result from './Result.js';
-import { Icon, Image, Statistic } from 'semantic-ui-react'
 import './Common.css';
 
+registerLocale('ja', ja);
+
 class Home extends React.Component {
-  state = { date: '', budget: '10000', departure: '二子玉川駅', duration: '90', courses: [] }
+  state = { date: '', budget: '10000', departure: '1', duration: '90', courses: [] }
 
   componentDidMount() {
     let date = new Date();
@@ -20,12 +24,11 @@ class Home extends React.Component {
 
     const date = this.state.date
     const year = date.getFullYear();
-    const month = date.getMonth() + 1;
-    const day = ("0" + date.getDate()).slice(-2);
-    const response = await axios.get('https://api.myjson.com/bins/14pcw0');
-    // const response = await axios.get('http://localhost:3001/search', {
-    //   params: { date: `${year}-${month}-${day}`, budget: this.state.budget, departure: this.state.departure, duration: this.state.duration }
-    // });
+    const month = date.getMonth();
+    const day = date.getYear();
+    const response = await axios.get('https://ttdbfb2924.execute-api.ap-northeast-1.amazonaws.com/production/fetch-golf-plans?', {
+      params: { date: `${year}${month}${day}`, budget: this.state.budget, departure: this.state.departure, duration: this.state.duration }
+    });
 
     this.setState({ courses: response.data.courses })
   }
@@ -34,31 +37,36 @@ class Home extends React.Component {
     return (
       <>
         <Navbar />
-        <div class="ui container">
-          <div class="Search__Form">
-            <form class="ui form segment" onSubmit={this.onFormSubmit}>
-              <div class="field">
+        <div className="ui container">
+          <div className="Search__Form">
+            <form className="ui form segment" onSubmit={this.onFormSubmit}>
+              <div className="field">
                 <label>日付</label>
-                <input name="date" type="date" />
+                <DatePicker
+                  dateFormat="yyyy/MM/dd"
+                  locale='ja'
+                  selected={this.state.date}
+                  onChange={e => this.setState({ date: e})}
+                />
               </div>
-              <div class="field">
+              <div className="field">
                 <label>金額</label>
-                <select class="ui dropdown" name="dropdown">
+                <select className="ui dropdown" name="dropdown" value={this.state.budget} onChange={e => this.setState({ budget: e.target.value })}>
                   <option value="10000">10000</option>
                   <option value="5000">5000</option>
                 </select>
               </div>
-              <div class="field">
+              <div className="field">
                 <label>場所</label>
-                <select class="ui dropdown" name="dropdown" value={this.state.departure} onChange={e => this.setState({ departure: e.target.value })}>
-                  <option value="nikotama">二子玉川駅</option>
+                <select className="ui dropdown" name="dropdown" value={this.state.departure} onChange={e => this.setState({ departure: e.target.value })}>
+                  <option value="1">二子玉川駅</option>
                 </select>
               </div>
-              <div class="field">
+              <div className="field">
                 <label>所要時間</label>
-                <select class="ui dropdown" name="dropdown" value={this.state.duration} onChange={e => this.setState({ duration: e.target.value })}>
+                <select className="ui dropdown" name="dropdown" value={this.state.duration} onChange={e => this.setState({ duration: e.target.value })}>
                   <option value="90">90分</option>
-                  <option value="90">60分</option>
+                  <option value="60">60分</option>
                 </select>
               </div>
               <div className="Search__Button">
@@ -70,7 +78,7 @@ class Home extends React.Component {
           </div>
         </div>
 
-        <div class="ui cards">
+        <div className="ui cards">
           {this.state.courses.map(course => <Result course={course}/>)}
         </div>
       </>
