@@ -88,7 +88,12 @@ class Home extends React.Component {
         </div>
 
         {this.state.loading ? (
-          <div>Loadinng...</div>
+          <div class="loading">
+            <div class="loading-image">
+              <img src="https://img.gifmagazine.net/gifmagazine/images/1280750/original.gif" alt="golf-gif"/>
+              <span>検索中です。この処理は20秒ほどかかります。</span>
+            </div>
+          </div>
         ) : (
           <Result plans={this.state.plans} />
         )}
