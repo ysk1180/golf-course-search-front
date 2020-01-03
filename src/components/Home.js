@@ -39,14 +39,14 @@ class Home extends React.Component {
     this.setState({ loading: false });
   }
 
-  sort = (type) => {
+  sort = (type, sort_order) => {
     let plans = this.state.plans
     plans.sort((plan1, plan2) => {
       if (plan1[type] < plan2[type]) {
-        return -1
+        return sort_order === 'asc' ? -1 : 1
       }
       if (plan1[type] > plan2[type]) {
-        return 1
+        return sort_order === 'asc' ? 1 : -1
       }
       return 0
     })
