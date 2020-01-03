@@ -3,7 +3,17 @@ import './Common.css';
 
 const Result = ({ plans, error }) => {
   if (error) {
-    return <div>エラーが発生しました。検索をやり直してください。</div>;
+    return (
+      <div className="wrapper">
+        <div class="ui warning message">
+          <i class="close icon"></i>
+          <div class="header">
+            エラーが発生しました。
+          </div>
+          検索条件を見直すか、管理者にお問い合わせください。
+        </div>
+      </div>
+    );
   }
   if (!plans) {
     return <div>検索してください</div>;
