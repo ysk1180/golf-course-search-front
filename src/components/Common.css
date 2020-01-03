@@ -29,6 +29,7 @@ body {
   padding: 16px 16px;
   border-radius: 4px;
   transition: .4s;
+  background: #fff;
 }
 
 .Search__Button__Design:active {
