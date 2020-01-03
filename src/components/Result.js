@@ -1,7 +1,10 @@
 import React from 'react';
 import './Common.css';
 
-const Result = ({ plans }) => {
+const Result = ({ plans, error }) => {
+  if (error) {
+    return <div>エラーが発生しました。検索をやり直してください。</div>;
+  }
   if (!plans) {
     return <div>検索してください</div>;
   }
