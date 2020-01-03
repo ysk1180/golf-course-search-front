@@ -43,61 +43,24 @@ body {
 }
 
 /*Result*/
-@import 'https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css';
-@import 'https://fonts.googleapis.com/css?family=Roboto:700,400';
-
-.wrapper {
-  max-width: 700px;
-  margin: 50px auto;
-  padding-left: 1em;
-  padding-right: 1em;
+.ui.items:last-child {
+  margin: 40px;
 }
 
-.border-tlr-radius {
-  border-top-left-radius: 2px;
-  border-top-right-radius: 2px;
+.cinema {
+  font-size: 20px;
 }
 
-.radius { border-radius: 2px; }
-
-.padding-tb { padding-top: 1.6rem; padding-bottom: 1.6rem;}
-
-.shadowDepth0 { box-shadow: 0 1px 3px rgba(0,0,0, 0.12); }
-
-.shadowDepth1 {
-   box-shadow:
-      0 1px 3px rgba(0,0,0, 0.12),
-      0 1px 2px rgba(0,0,0, 0.24)
+.item-buttons {
+  text-align: center;
 }
 
-.card {
-  background-color: #fff;
-  margin-bottom: 1.6rem;
-}
-
-.card__padding {
-  padding: 1.6rem;
-}
-
-.card__image {
-  min-height: 100px;
-  background-color: #eee;
-}
-  .card__image img {
-    width: 100%;
-    height: 250px;
-    display: block;
-  }
-
-.card__content {
-  position: relative;
-}
-
-/* card meta */
-.card__meta time {
-  font-size: 1.5rem;
-  color: #bbb;
-  margin-left: 0.8rem;
+.item-button {
+  padding: 10px;
+  margin: 8px 5px;
+  background: #74CBCC;
+  border: #74CBCC;
+  border-radius: 4px;
 }
 
 /* loading */
@@ -112,6 +75,15 @@ body {
   opacity: 0.8;
   color: black;
 }
+
+.loading p {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  margin:0;
+  padding:0;
+  }
 
 .loading-image {
   position: absolute;
