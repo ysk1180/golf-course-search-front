@@ -1,7 +1,7 @@
 import React from 'react';
 import './Common.css';
 
-const Result = ({ plans, error }) => {
+const Result = ({ plans, error, sort }) => {
   if (error) {
     return (
       <div className="wrapper">
@@ -45,9 +45,16 @@ const Result = ({ plans, error }) => {
   });
 
   return (
-    <div className="ui cards">
-      {results}
-    </div>
+    <>
+      <div className="ui buttons center aligned">
+        <button className="ui button active" onClick={() => sort('duration')}>移動時間の短い順</button>
+        <button className="ui button" onClick={() => sort('price')}>安い順</button>
+        <button className="ui button" onClick={() => sort('evaluation')}>評価の高い順</button>
+      </div>
+      <div className="ui cards">
+        {results}
+      </div>
+    </>
   )
 }
 
