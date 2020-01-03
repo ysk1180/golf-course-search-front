@@ -42,6 +42,20 @@ class Home extends React.Component {
     this.setState({ loading: false });
   }
 
+  sort = (type) => {
+    let plans = this.state.plans
+    plans.sort((plan1, plan2) => {
+      if (plan1[type] < plan2[type]) {
+        return -1
+      }
+      if (plan1[type] > plan2[type]) {
+        return 1
+      }
+      return 0
+    })
+    this.setState({ plans: plans })
+  }
+
   render() {
     return (
       <>
@@ -90,7 +104,7 @@ class Home extends React.Component {
         {this.state.loading ? (
           <div>Loadinng...</div>
         ) : (
-          <Result plans={this.state.plans} />
+          <Result plans={this.state.plans} sort={this.sort} />
         )}
       </>
     );
