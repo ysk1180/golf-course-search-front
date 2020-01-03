@@ -11,7 +11,7 @@ import './Common.css';
 registerLocale('ja', ja);
 
 class Home extends React.Component {
-  state = { date: '', budget: '10000', departure: '1', duration: '90', loading: false }
+  state = { date: '', budget: '10000', departure: '1', duration: '90', loading: false, error: '' }
 
   componentDidMount() {
     let date = new Date();
@@ -33,11 +33,8 @@ class Home extends React.Component {
       });
       this.setState({ plans: response.data.plans })
     } catch (e) {
-      if (e.response.status === 401) {
-        //　エラーの内容を記述
-      } else {
-        //401エラー以外のエラーが返ってきた場合の処理を記述
-      }
+      this.setState({ error: e })
+      console.log(e)
     }
     this.setState({ loading: false });
   }
@@ -88,14 +85,14 @@ class Home extends React.Component {
         </div>
 
         {this.state.loading ? (
-          <div class="loading">
-            <div class="loading-image">
+          <div className="loading">
+            <div className="loading-image">
               <img src="https://img.gifmagazine.net/gifmagazine/images/1280750/original.gif" alt="golf-gif"/>
               <span>検索中です。この処理は20秒ほどかかります。</span>
             </div>
           </div>
         ) : (
-          <Result plans={this.state.plans} />
+          <Result plans={this.state.plans} error={this.state.error} />
         )}
       </>
     );
