@@ -58,10 +58,13 @@ class Home extends React.Component {
       <>
         <Navbar />
         <div className="ui container">
+          <div className="top_description">
+            <p><i class="golf ball icon"></i>プレー日、上限金額の項目に加えて、「ゴルフ場までの移動時間」でもゴルフ場を絞り込むことができ、ゴルフ場探しを簡単にします。楽に行けるゴルフ場を予約してゴルフを楽しみましょう。</p>
+          </div>
           <div className="Search__Form">
             <form className="ui form segment" onSubmit={this.onFormSubmit}>
               <div className="field">
-                <label>日付</label>
+                <label><i class="calendar alternate outline icon"></i>日付</label>
                 <DatePicker
                   dateFormat="yyyy/MM/dd"
                   locale='ja'
@@ -70,7 +73,7 @@ class Home extends React.Component {
                 />
               </div>
               <div className="field">
-                <label>上限金額</label>
+                <label><i class="yen sign icon"></i>上限金額</label>
                 <select className="ui dropdown" name="dropdown" value={this.state.budget} onChange={e => this.setState({ budget: e.target.value })}>
                   <option value="7000">7,000円</option>
                   <option value="8000">8,000円</option>
@@ -85,7 +88,7 @@ class Home extends React.Component {
                 </select>
               </div>
               <div className="field">
-                <label>移動時間計算の出発地点（自宅から近い地点をお選びください）</label>
+                <label><i class="map pin icon"></i>移動時間計算の出発地点（自宅から近い地点をお選びください）</label>
                 <select className="ui dropdown" name="dropdown" value={this.state.departure} onChange={e => this.setState({ departure: e.target.value })}>
                   <option value="1">二子玉川駅</option>
                   <option value="2">吉祥寺駅</option>
@@ -95,7 +98,7 @@ class Home extends React.Component {
                 </select>
               </div>
               <div className="field">
-                <label>車での移動時間の上限</label>
+                <label><i class="car icon"></i>車での移動時間の上限</label>
                 <select className="ui dropdown" name="dropdown" value={this.state.duration} onChange={e => this.setState({ duration: e.target.value })}>
                   <option value="60">60分</option>
                   <option value="70">70分</option>
@@ -111,7 +114,7 @@ class Home extends React.Component {
               </div>
               <div className="Search__Button">
                 <button type="submit" className="Search__Button__Design">
-                  ゴルフ場を検索する
+                  <i class="search icon"></i>ゴルフ場を検索する
                 </button>
               </div>
             </form>
