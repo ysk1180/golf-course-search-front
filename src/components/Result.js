@@ -69,10 +69,10 @@ const Result = ({ plans, error, sort, count }) => {
             <p>{plan.caption}</p>
           </div>
           <div className="item-button">
-            <a href={plan.reserve_url_pc}>PCサイト</a>
+            <a href={plan.reserve_url_pc} target="_blank" rel="noopener noreferrer">PCサイト</a>
           </div>
           <div className="item-button">
-            <a href={plan.reserve_url_mobile}>スマートフォン専用サイト</a>
+            <a href={plan.reserve_url_mobile} target="_blank" rel="noopener noreferrer">スマートフォン専用サイト</a>
           </div>
         </div>
       </div>
