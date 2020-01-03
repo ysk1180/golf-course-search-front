@@ -1,30 +1,39 @@
 import React from 'react';
 import './Common.css';
 
-const Result = ({ course }) => {
-  if (!course) {
-    return <div>Loading...</div>;
+const Result = ({ plans }) => {
+  if (!plans) {
+    return <div>検索してください</div>;
   }
-  return (
-    <div class="wrapper">
-      <div class="card radius shadowDepth1">
-        <div class="card__image border-tlr-radius">
-          <image src="http://sallyaroundthebay.com/wp-content/uploads/2013/06/duck-Ernst-Vikne-300x300.jpg" alt="image" class="border-tlr-radius"/>
-        </div>
 
-        <div class="card__content card__padding">
-          <div class="card__meta">
-            <span>{course.prefecture}</span>
-            <time>{'$'+course.price}</time>
+  const results = plans.map(plan => {
+    return (
+      <div className="wrapper">
+        <div className="card radius shadowDepth1">
+          <div className="card__image border-tlr-radius">
+            <img src={plan.image_url} alt={plan.name} className="border-tlr-radius"/>
           </div>
 
-          <article class="card__article">
-            <h2>{course.name}</h2>
+          <div className="card__content card__padding">
+            <div className="card__meta">
+              <span>{plan.prefecture}</span>
+              <time>{plan.price+'円'}</time>
+            </div>
 
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus harum...</p>
-          </article>
+            <article className="card__article">
+              <h2>{plan.name}</h2>
+
+              <p>{plan.caption}</p>
+            </article>
+          </div>
         </div>
       </div>
+    )
+  });
+
+  return (
+    <div className="ui cards">
+      {results}
     </div>
   )
 }

@@ -11,7 +11,7 @@ import './Common.css';
 registerLocale('ja', ja);
 
 class Home extends React.Component {
-  state = { date: '', budget: '10000', departure: '1', duration: '90', courses: [] }
+  state = { date: '', budget: '10000', departure: '1', duration: '90', loading: false }
 
   componentDidMount() {
     let date = new Date();
@@ -20,17 +20,26 @@ class Home extends React.Component {
   }
 
   onFormSubmit = async (event) => {
-    event.preventDefault();
+    try {
+      this.setState({ loading: true });
+      event.preventDefault();
 
-    const date = this.state.date
-    const year = date.getFullYear();
-    const month = date.getMonth();
-    const day = date.getYear();
-    const response = await axios.get('https://ttdbfb2924.execute-api.ap-northeast-1.amazonaws.com/production/fetch-golf-plans?', {
-      params: { date: `${year}${month}${day}`, budget: this.state.budget, departure: this.state.departure, duration: this.state.duration }
-    });
-
-    this.setState({ courses: response.data.courses })
+      const date = this.state.date
+      const year = date.getFullYear();
+      const month = date.getMonth();
+      const day = date.getYear();
+      const response = await axios.get('https://ttdbfb2924.execute-api.ap-northeast-1.amazonaws.com/production/fetch-golf-plans?', {
+        params: { date: `${year}${month}${day}`, budget: this.state.budget, departure: this.state.departure, duration: this.state.duration }
+      });
+      this.setState({ plans: response.data.plans })
+    } catch (e) {
+      if (e.response.status === 401) {
+        //　エラーの内容を記述
+      } else {
+        //401エラー以外のエラーが返ってきた場合の処理を記述
+      }
+    }
+    this.setState({ loading: false });
   }
 
   render() {
@@ -78,9 +87,11 @@ class Home extends React.Component {
           </div>
         </div>
 
-        <div className="ui cards">
-          {this.state.courses.map(course => <Result course={course}/>)}
-        </div>
+        {this.state.loading ? (
+          <div>Loadinng...</div>
+        ) : (
+          <Result plans={this.state.plans} />
+        )}
       </>
     );
   }
