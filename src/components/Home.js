@@ -11,7 +11,7 @@ import './Common.css';
 registerLocale('ja', ja);
 
 class Home extends React.Component {
-  state = { date: '', budget: '10000', departure: '1', duration: '90', loading: false, error: '' }
+  state = { date: '', budget: '10000', departure: '1', duration: '90', loading: false, error: '', plans: null, count: 0 }
 
   componentDidMount() {
     let date = new Date();
