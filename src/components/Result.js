@@ -1,11 +1,11 @@
 import React from 'react';
 import './Common.css';
 
-const Result = ({ plans, error, sort }) => {
+const Result = ({ plans, error, sort, count }) => {
   if (error) {
     return (
       <div className="wrapper">
-        <div class="ui warning message">
+        <div class="ui negative message">
           <i class="close icon"></i>
           <div class="header">
             エラーが発生しました。
@@ -15,8 +15,22 @@ const Result = ({ plans, error, sort }) => {
       </div>
     );
   }
+
   if (!plans) {
-    return <div>検索してください</div>;
+    return <div></div>;
+  }
+
+  if (count === 0) {
+    return (
+      <div className="wrapper">
+        <div class="ui orange message">
+          <i class="close icon"></i>
+          <div class="header">
+            ゴルフ場が見つかりませんでした。条件を変更して再度検索してください。
+          </div>
+        </div>
+      </div>
+    );
   }
 
   const results = plans.map(plan => {
