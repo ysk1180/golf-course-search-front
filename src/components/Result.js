@@ -1,7 +1,7 @@
 import React from 'react';
 import './Common.css';
 
-const Result = ({ plans, error, planSort, count, planSortType }) => {
+const Result = ({ plans, error, planSort, planCount, planSortType }) => {
   if (error) {
     return (
       <div className="wrapper">
@@ -20,11 +20,10 @@ const Result = ({ plans, error, planSort, count, planSortType }) => {
     return <div></div>;
   }
 
-  if (count === 0) {
+  if (planCount === 0) {
     return (
       <div className="wrapper">
         <div className="ui orange message">
-          <i className="close icon"></i>
           <div className="header">
             ゴルフ場が見つかりませんでした。条件を変更して再度検索してください。
           </div>
