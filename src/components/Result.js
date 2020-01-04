@@ -35,7 +35,7 @@ const Result = ({ plans, error, planSort, count, planSortType }) => {
 
   const results = plans.map(plan => {
     return (
-      <div className="item" id={plan.course_id}>
+      <div className="item" key={plan.plan_id}>
         <div className="image">
           <img src={plan.image_url} alt={plan.course_name} />
         </div>
