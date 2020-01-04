@@ -387,6 +387,7 @@ body {
   border-radius: 4px;
   transition: .4s;
   background: #fff;
+  cursor:pointer
 }
 
 .Search__Button__Design:active {
