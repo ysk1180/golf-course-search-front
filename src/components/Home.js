@@ -4,6 +4,7 @@ import axios from 'axios';
 import './css/Common.css';
 import './css/Reset.css';
 import 'semantic-ui-css/semantic.min.css'
+import format from 'date-fns/format';
 
 import Header from './layout/Header.js';
 import Footer from './layout/Footer.js';
@@ -20,12 +21,8 @@ class Home extends React.Component {
       this.setState({ loading: true });
       event.preventDefault();
 
-      const date = this.state.date
-      const year = date.getFullYear();
-      const month = date.getMonth();
-      const day = date.getYear();
       const response = await axios.get('https://ttdbfb2924.execute-api.ap-northeast-1.amazonaws.com/production/fetch-golf-plans?', {
-        params: { date: `${year}${month}${day}`, budget: this.state.budget, departure: this.state.departure, duration: this.state.duration }
+        params: { date: format(this.state.date, 'yyyyMMdd'), budget: this.state.budget, departure: this.state.departure, duration: this.state.duration }
       });
       this.setState({ planCount: response.data.count })
       this.setState({ plans: response.data.plans })
