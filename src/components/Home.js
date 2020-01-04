@@ -18,6 +18,7 @@ class Home extends React.Component {
     let date = new Date();
     date.setDate(date.getDate() + 14);
     this.setState({ date: date })
+
   }
 
   onFormSubmit = async (event) => {
@@ -57,6 +58,8 @@ class Home extends React.Component {
   }
 
   render() {
+    const Today = new Date();
+
     return (
       <>
         <main>
@@ -74,6 +77,7 @@ class Home extends React.Component {
                     locale='ja'
                     selected={this.state.date}
                     onChange={e => this.setState({ date: e})}
+                    minDate={Today}
                   />
                 </div>
                 <div className="field">
