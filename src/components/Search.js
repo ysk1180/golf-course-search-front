@@ -6,7 +6,7 @@ import './css/Common.css';
 import './css/Reset.css';
 import "react-datepicker/dist/react-datepicker.css"
 
-const Search = ({ date, budget, departure, duration, onFormSubmit }) => {
+const Search = ({ date, budget, departure, duration, onFormSubmit, changeState }) => {
     const Today = new Date();
     registerLocale('ja', ja);
 
@@ -24,13 +24,13 @@ const Search = ({ date, budget, departure, duration, onFormSubmit }) => {
                 dateFormat="yyyy/MM/dd"
                 locale='ja'
                 selected={date}
-                onChange={e => this.setState({ date: e})}
+                onChange={e => changeState('date', e)}
                 minDate={Today}
               />
             </div>
             <div className="field">
               <label><i className="yen sign icon"></i>上限金額</label>
-              <select className="ui dropdown" name="dropdown" value={budget} onChange={e => this.setState({ budget: e.target.value })}>
+              <select className="ui dropdown" name="dropdown" value={budget} onChange={e => changeState('budget', e.target.value)}>
                 <option value="7000">7,000円</option>
                 <option value="8000">8,000円</option>
                 <option value="9000">9,000円</option>
@@ -45,7 +45,7 @@ const Search = ({ date, budget, departure, duration, onFormSubmit }) => {
             </div>
             <div className="field">
               <label><i className="map pin icon"></i>移動時間計算の出発地点（自宅から近い地点をお選びください）</label>
-              <select className="ui dropdown" name="dropdown" value={departure} onChange={e => this.setState({ departure: e.target.value })}>
+              <select className="ui dropdown" name="dropdown" value={departure} onChange={e => changeState('departure', e.target.value)}>
                 <option value="1">二子玉川駅</option>
                 <option value="2">吉祥寺駅</option>
                 <option value="3">赤羽駅</option>
@@ -55,7 +55,7 @@ const Search = ({ date, budget, departure, duration, onFormSubmit }) => {
             </div>
             <div className="field">
               <label><i className="car icon"></i>車での移動時間の上限</label>
-              <select className="ui dropdown" name="dropdown" value={duration} onChange={e => this.setState({ duration: e.target.value })}>
+              <select className="ui dropdown" name="dropdown" value={duration} onChange={e => changeState('duration', e.target.value)}>
                 <option value="60">60分</option>
                 <option value="70">70分</option>
                 <option value="80">80分</option>

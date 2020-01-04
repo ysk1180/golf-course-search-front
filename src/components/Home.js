@@ -10,15 +10,10 @@ import Footer from './layout/Footer.js';
 import Loading from './layout/Loading.js';
 import Result from './Result.js';
 import Search from './Search.js';
+import addDays from 'date-fns/addDays';
 
 class Home extends React.Component {
-  state = { date: '', budget: '12000', departure: '1', duration: '90', loading: false, error: '', plans: null, planCount: 0, planSortType: 'duration' }
-
-  componentDidMount() {
-    let date = new Date();
-    date.setDate(date.getDate() + 14);
-    this.setState({ date: date })
-  }
+  state = { date: addDays(new Date(), 14), budget: '12000', departure: '1', duration: '90', loading: false, error: '', plans: null, planCount: 0, planSortType: 'duration' }
 
   onFormSubmit = async (event) => {
     try {
@@ -39,6 +34,10 @@ class Home extends React.Component {
       console.log(e)
     }
     this.setState({ loading: false });
+  }
+
+  changeState = (key, value) => {
+    this.setState({ [key]: value })
   }
 
   planSort = (type, sortOrder) => {
@@ -67,6 +66,7 @@ class Home extends React.Component {
                   departure={this.state.departure}
                   duration={this.state.duration}
                   onFormSubmit={this.onFormSubmit}
+                  changeState={this.changeState}
           />
 
           <Loading loading={this.state.loading}/>
