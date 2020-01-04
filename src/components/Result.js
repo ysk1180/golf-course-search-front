@@ -82,10 +82,7 @@ const Result = ({ plans, error, planCount, planSortType, changeState }) => {
             <p>{plan.caption}</p>
           </div>
           <div className="item-button">
-            <a href={plan.reserve_url_pc} target="_blank" rel="noopener noreferrer">PCサイト</a>
-          </div>
-          <div className="item-button">
-            <a href={plan.reserve_url_mobile} target="_blank" rel="noopener noreferrer">スマートフォン専用サイト</a>
+            <a href={plan.reserve_url_pc} target="_blank" rel="noopener noreferrer">コースの予約はこちら</a>
           </div>
         </div>
       </div>
