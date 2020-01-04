@@ -69,16 +69,14 @@ class Home extends React.Component {
                   onFormSubmit={this.onFormSubmit}
           />
 
-          {this.state.loading ? (
-            <Loading />
-          ) : (
-            <Result plans={this.state.plans}
-                    error={this.state.error}
-                    planCount={this.state.planCount}
-                    planSortType={this.state.planSortType}
-                    planSort={this.planSort}
-            />
-          )}
+          <Loading loading={this.state.loading}/>
+
+          <Result plans={this.state.plans}
+                  error={this.state.error}
+                  planCount={this.state.planCount}
+                  planSortType={this.state.planSortType}
+                  planSort={this.planSort}
+          />
         </main>
 
         <Footer />
