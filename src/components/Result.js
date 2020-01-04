@@ -1,7 +1,21 @@
 import React from 'react';
 import './css/Common.css';
 
-const Result = ({ plans, error, planSort, planCount, planSortType }) => {
+const Result = ({ plans, error, planCount, planSortType, changeState }) => {
+  const planSort = (type, sortOrder) => {
+    plans.sort((plan1, plan2) => {
+      if (plan1[type] < plan2[type]) {
+        return sortOrder === 'asc' ? -1 : 1
+      }
+      if (plan1[type] > plan2[type]) {
+        return sortOrder === 'asc' ? 1 : -1
+      }
+      return 0
+    })
+    changeState(plans, plans)
+    changeState(planSortType, type)
+  }
+
   if (error) {
     return (
       <div className="wrapper">

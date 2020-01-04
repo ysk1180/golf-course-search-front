@@ -36,20 +36,6 @@ class Home extends React.Component {
     this.setState({ [key]: value })
   }
 
-  planSort = (type, sortOrder) => {
-    let plans = this.state.plans
-    plans.sort((plan1, plan2) => {
-      if (plan1[type] < plan2[type]) {
-        return sortOrder === 'asc' ? -1 : 1
-      }
-      if (plan1[type] > plan2[type]) {
-        return sortOrder === 'asc' ? 1 : -1
-      }
-      return 0
-    })
-    this.setState({ plans: plans, planSortType: type })
-  }
-
   render() {
     return (
       <>
@@ -70,7 +56,7 @@ class Home extends React.Component {
                   error={this.state.error}
                   planCount={this.state.planCount}
                   planSortType={this.state.planSortType}
-                  planSort={this.planSort}
+                  changeState={this.changeState}
           />
         </main>
 
