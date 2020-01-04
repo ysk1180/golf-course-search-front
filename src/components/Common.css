@@ -22,6 +22,22 @@ html {
 
 body {
   margin: 0;
+  background: #F3F1DB!important;
+}
+
+body,
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+footer {
+  margin-top: auto;
+}
+
+.footer {
+  background: #80C544!important;
 }
 
 /**
@@ -74,6 +90,8 @@ pre {
  */
 
 a {
+  color: #F3F1DB!important;
+  margin: 0 10px;
   background-color: transparent;
 }
 
@@ -351,10 +369,6 @@ template {
 /* reset cssここまで*/
 
 
-body {
-  background: #F3F1DB!important;
-}
-
 /* Header */
 .ui.inverted.menu {
   background: #C1D765!important;
@@ -401,6 +415,10 @@ body {
 }
 
 /*Result*/
+.item {
+  margin-bottom: 10px;
+}
+
 .ui.items:last-child {
   margin: 40px;
 }
@@ -420,7 +438,7 @@ body {
 .item-button {
   display: inline-block;
   padding: 10px;
-  margin: 16px 5px 0;
+  margin: 16px 5px 8px;
   background: #F1647A;
   border: #F1647A;
   border-radius: 4px;

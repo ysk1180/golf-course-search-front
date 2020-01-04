@@ -5,6 +5,7 @@ import DatePicker, { registerLocale } from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
 
 import Navbar from './Navbar.js';
+import Footer from './Footer.js';
 import Result from './Result.js';
 import './Common.css';
 
@@ -58,81 +59,85 @@ class Home extends React.Component {
   render() {
     return (
       <>
-        <Navbar />
-        <div className="ui container">
-          <div className="top_description">
-            <p><i className="golf ball icon"></i>プレー日、上限金額の項目に加えて、「ゴルフ場までの移動時間」でもゴルフ場を絞り込むことができ、ゴルフ場探しを簡単にします。楽に行けるゴルフ場を予約してゴルフを楽しみましょう。</p>
-          </div>
-          <div className="Search__Form">
-            <form className="ui form segment" onSubmit={this.onFormSubmit}>
-              <div className="field">
-                <label><i className="calendar alternate outline icon"></i>日付</label>
-                <DatePicker
-                  dateFormat="yyyy/MM/dd"
-                  locale='ja'
-                  selected={this.state.date}
-                  onChange={e => this.setState({ date: e})}
-                />
-              </div>
-              <div className="field">
-                <label><i className="yen sign icon"></i>上限金額</label>
-                <select className="ui dropdown" name="dropdown" value={this.state.budget} onChange={e => this.setState({ budget: e.target.value })}>
-                  <option value="7000">7,000円</option>
-                  <option value="8000">8,000円</option>
-                  <option value="9000">9,000円</option>
-                  <option value="10000">10,000円</option>
-                  <option value="11000">11,000円</option>
-                  <option value="12000">12,000円</option>
-                  <option value="13000">13,000円</option>
-                  <option value="14000">14,000円</option>
-                  <option value="15000">15,000円</option>
-                  <option value="16000">16,000円</option>
-                </select>
-              </div>
-              <div className="field">
-                <label><i className="map pin icon"></i>移動時間計算の出発地点（自宅から近い地点をお選びください）</label>
-                <select className="ui dropdown" name="dropdown" value={this.state.departure} onChange={e => this.setState({ departure: e.target.value })}>
-                  <option value="1">二子玉川駅</option>
-                  <option value="2">吉祥寺駅</option>
-                  <option value="3">赤羽駅</option>
-                  <option value="4">錦糸町駅</option>
-                  <option value="5">川崎駅</option>
-                </select>
-              </div>
-              <div className="field">
-                <label><i className="car icon"></i>車での移動時間の上限</label>
-                <select className="ui dropdown" name="dropdown" value={this.state.duration} onChange={e => this.setState({ duration: e.target.value })}>
-                  <option value="60">60分</option>
-                  <option value="70">70分</option>
-                  <option value="80">80分</option>
-                  <option value="90">90分</option>
-                  <option value="100">100分</option>
-                  <option value="110">110分</option>
-                  <option value="120">120分</option>
-                  <option value="130">130分</option>
-                  <option value="140">140分</option>
-                  <option value="150">150分</option>
-                </select>
-              </div>
-              <div className="Search__Button">
-                <button type="submit" className="Search__Button__Design">
-                  <i className="search icon"></i>ゴルフ場を検索する
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-
-        {this.state.loading ? (
-          <div className="loading">
-            <div className="loading-image">
-              <img src="https://img.gifmagazine.net/gifmagazine/images/1280750/original.gif" alt="golf-gif"/>
-              <p>検索中です。この処理は20秒ほどかかります。</p>
+        <main>
+          <div className="ui container" id="container">
+            <Navbar />
+            <div className="top_description">
+              <p><i className="golf ball icon"></i>プレー日、上限金額の項目に加えて、「ゴルフ場までの移動時間」でもゴルフ場を絞り込むことができ、ゴルフ場探しを簡単にします。楽に行けるゴルフ場を予約してゴルフを楽しみましょう。</p>
+            </div>
+            <div className="Search__Form">
+              <form className="ui form segment" onSubmit={this.onFormSubmit}>
+                <div className="field">
+                  <label><i className="calendar alternate outline icon"></i>日付</label>
+                  <DatePicker
+                    dateFormat="yyyy/MM/dd"
+                    locale='ja'
+                    selected={this.state.date}
+                    onChange={e => this.setState({ date: e})}
+                  />
+                </div>
+                <div className="field">
+                  <label><i className="yen sign icon"></i>上限金額</label>
+                  <select className="ui dropdown" name="dropdown" value={this.state.budget} onChange={e => this.setState({ budget: e.target.value })}>
+                    <option value="7000">7,000円</option>
+                    <option value="8000">8,000円</option>
+                    <option value="9000">9,000円</option>
+                    <option value="10000">10,000円</option>
+                    <option value="11000">11,000円</option>
+                    <option value="12000">12,000円</option>
+                    <option value="13000">13,000円</option>
+                    <option value="14000">14,000円</option>
+                    <option value="15000">15,000円</option>
+                    <option value="16000">16,000円</option>
+                  </select>
+                </div>
+                <div className="field">
+                  <label><i className="map pin icon"></i>移動時間計算の出発地点（自宅から近い地点をお選びください）</label>
+                  <select className="ui dropdown" name="dropdown" value={this.state.departure} onChange={e => this.setState({ departure: e.target.value })}>
+                    <option value="1">二子玉川駅</option>
+                    <option value="2">吉祥寺駅</option>
+                    <option value="3">赤羽駅</option>
+                    <option value="4">錦糸町駅</option>
+                    <option value="5">川崎駅</option>
+                  </select>
+                </div>
+                <div className="field">
+                  <label><i className="car icon"></i>車での移動時間の上限</label>
+                  <select className="ui dropdown" name="dropdown" value={this.state.duration} onChange={e => this.setState({ duration: e.target.value })}>
+                    <option value="60">60分</option>
+                    <option value="70">70分</option>
+                    <option value="80">80分</option>
+                    <option value="90">90分</option>
+                    <option value="100">100分</option>
+                    <option value="110">110分</option>
+                    <option value="120">120分</option>
+                    <option value="130">130分</option>
+                    <option value="140">140分</option>
+                    <option value="150">150分</option>
+                  </select>
+                </div>
+                <div className="Search__Button">
+                  <button type="submit" className="Search__Button__Design">
+                    <i className="search icon"></i>ゴルフ場を検索する
+                  </button>
+                </div>
+              </form>
             </div>
           </div>
-        ) : (
-          <Result plans={this.state.plans} error={this.state.error} planSort={this.planSort} planCount={this.state.planCount} planSortType={this.state.planSortType} />
-        )}
+
+          {this.state.loading ? (
+            <div className="loading">
+              <div className="loading-image">
+                <img src="https://img.gifmagazine.net/gifmagazine/images/1280750/original.gif" alt="golf-gif"/>
+                <p>検索中です。この処理は20秒ほどかかります。</p>
+              </div>
+            </div>
+          ) : (
+            <Result plans={this.state.plans} error={this.state.error} planSort={this.planSort} planCount={this.state.planCount} planSortType={this.state.planSortType} />
+          )}
+        </main>
+
+        <Footer />
       </>
     );
   }
