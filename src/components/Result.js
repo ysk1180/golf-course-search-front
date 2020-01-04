@@ -1,7 +1,7 @@
 import React from 'react';
 import './Common.css';
 
-const Result = ({ plans, error, sort, count }) => {
+const Result = ({ plans, error, planSort, count, planSortType }) => {
   if (error) {
     return (
       <div className="wrapper">
@@ -83,9 +83,9 @@ const Result = ({ plans, error, sort, count }) => {
     <>
       <div className="item-buttons">
         <div className="ui buttons">
-          <button className="ui button active" onClick={() => sort('duration', 'asc')}>移動時間の短い順</button>
-          <button className="ui button" onClick={() => sort('price', 'asc')}>安い順</button>
-          <button className="ui button" onClick={() => sort('evaluation', 'desc')}>評価の高い順</button>
+          <button className={`ui button ${planSortType === "duration" && "active"}`} onClick={() => planSort('duration', 'asc')}>移動時間の短い順</button>
+          <button className={`ui button ${planSortType === "price" && "active"}`} onClick={() => planSort('price', 'asc')}>安い順</button>
+          <button className={`ui button ${planSortType === "evaluation" && "active"}`} onClick={() => planSort('evaluation', 'desc')}>評価の高い順</button>
         </div>
       </div>
       <div className="ui divided items">

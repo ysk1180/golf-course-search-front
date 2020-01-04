@@ -11,7 +11,7 @@ import './Common.css';
 registerLocale('ja', ja);
 
 class Home extends React.Component {
-  state = { date: '', budget: '12000', departure: '1', duration: '90', loading: false, error: '', plans: null, count: 0 }
+  state = { date: '', budget: '12000', departure: '1', duration: '90', loading: false, error: '', plans: null, count: 0, planSortType: 'duration' }
 
   componentDidMount() {
     let date = new Date();
@@ -39,14 +39,15 @@ class Home extends React.Component {
     this.setState({ loading: false });
   }
 
-  sort = (type, sort_order) => {
+  planSort = (type, sortOrder) => {
+    this.setState({ planSortType: type})
     let plans = this.state.plans
     plans.sort((plan1, plan2) => {
       if (plan1[type] < plan2[type]) {
-        return sort_order === 'asc' ? -1 : 1
+        return sortOrder === 'asc' ? -1 : 1
       }
       if (plan1[type] > plan2[type]) {
-        return sort_order === 'asc' ? 1 : -1
+        return sortOrder === 'asc' ? 1 : -1
       }
       return 0
     })
@@ -129,7 +130,7 @@ class Home extends React.Component {
             </div>
           </div>
         ) : (
-          <Result plans={this.state.plans} error={this.state.error} sort={this.sort} />
+          <Result plans={this.state.plans} error={this.state.error} planSort={this.planSort} planSortType={this.state.planSortType} />
         )}
       </>
     );
