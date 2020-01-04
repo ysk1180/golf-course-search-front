@@ -15,7 +15,7 @@ import Result from './Result.js';
 import Search from './Search.js';
 
 class Home extends React.Component {
-  state = { date: addDays(new Date(), 14), budget: '12000', departure: '1', duration: '90', loading: false, error: '', plans: null, planCount: 0, planSortType: 'duration' }
+  state = { date: addDays(new Date(), 14), budget: '12000', departure: '1', duration: '90', loading: false, error: '', plans: null, planCount: 0, planSortType: 'sortDuration' }
 
   onFormSubmit = async (event) => {
     try {

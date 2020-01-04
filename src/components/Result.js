@@ -12,8 +12,8 @@ const Result = ({ plans, error, planCount, planSortType, changeState }) => {
       }
       return 0
     })
-    changeState(plans, plans)
-    changeState(planSortType, type)
+    changeState('plans', plans)
+    changeState('planSortType', type)
   }
 
   if (error) {
@@ -96,7 +96,7 @@ const Result = ({ plans, error, planCount, planSortType, changeState }) => {
     <>
       <div className="item-buttons">
         <div className="ui buttons">
-          <button className={`ui button ${planSortType === "duration" && "active"}`} onClick={() => planSort('duration', 'asc')}>移動時間の短い順</button>
+          <button className={`ui button ${planSortType === "sortDuration" && "active"}`} onClick={() => planSort('sortDuration', 'asc')}>移動時間の短い順</button>
           <button className={`ui button ${planSortType === "price" && "active"}`} onClick={() => planSort('price', 'asc')}>安い順</button>
           <button className={`ui button ${planSortType === "evaluation" && "active"}`} onClick={() => planSort('evaluation', 'desc')}>評価の高い順</button>
         </div>
