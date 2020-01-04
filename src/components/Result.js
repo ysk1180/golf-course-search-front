@@ -1,5 +1,5 @@
 import React from 'react';
-import './Common.css';
+import './css/Common.css';
 
 const Result = ({ plans, error, planSort, planCount, planSortType }) => {
   if (error) {

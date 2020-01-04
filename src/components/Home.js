@@ -1,15 +1,15 @@
 import React from 'react';
 import axios from 'axios';
-import ja from 'date-fns/locale/ja';
 import DatePicker, { registerLocale } from "react-datepicker"
+import ja from 'date-fns/locale/ja';
+
+import './css/Common.css';
+import './css/Reset.css';
+import 'semantic-ui-css/semantic.min.css'
 import "react-datepicker/dist/react-datepicker.css"
-
-import Navbar from './Navbar.js';
-import Footer from './Footer.js';
+import Header from './layout/Header.js';
+import Footer from './layout/Footer.js';
 import Result from './Result.js';
-import './Common.css';
-
-registerLocale('ja', ja);
 
 class Home extends React.Component {
   state = { date: '', budget: '12000', departure: '1', duration: '90', loading: false, error: '', plans: null, planCount: 0, planSortType: 'duration' }
@@ -59,12 +59,13 @@ class Home extends React.Component {
 
   render() {
     const Today = new Date();
+    registerLocale('ja', ja);
 
     return (
       <>
         <main>
           <div className="ui container" id="container">
-            <Navbar />
+            <Header />
             <div className="top_description">
               <p><i className="golf ball icon"></i>プレー日、上限金額の項目に加えて、「ゴルフ場までの移動時間」でもゴルフ場を絞り込むことができ、ゴルフ場探しを簡単にします。楽に行けるゴルフ場を予約してゴルフを楽しみましょう。</p>
             </div>
