@@ -50,7 +50,7 @@ const Result = ({ plans, error, planSort, count, planSortType }) => {
               </div>
               <div className="statistic">
                 <div className="value">
-                  <i className="yen sign icon"></i> {plan.price}
+                  <i className="yen sign icon"></i> {plan.price.toLocaleString()}
                 </div>
               </div>
               <div className="statistic">
