@@ -99,6 +99,7 @@ const Result = ({ plans, error, planCount, planSortType, changeState }) => {
         </div>
       </div>
       <div className="ui divided items">
+        <p><big>{planCount}</big> 件見つかりました</p>
         {results}
       </div>
     </>
