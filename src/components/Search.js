@@ -19,7 +19,7 @@ const Search = ({ date, budget, departure, duration, onFormSubmit, changeState }
         <div className="Search__Form">
           <form className="ui form segment" onSubmit={onFormSubmit}>
             <div className="field">
-              <label><i className="calendar alternate outline icon"></i>日付</label>
+              <label><i className="calendar alternate outline icon"></i>プレー日</label>
               <DatePicker
                 dateFormat="yyyy/MM/dd"
                 locale='ja'
