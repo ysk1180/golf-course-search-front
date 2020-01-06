@@ -82,7 +82,7 @@ const Result = ({ plans, error, planCount, planSortType, changeState }) => {
             <p>{plan.caption}</p>
           </div>
           <div className="item-button">
-            <a href={plan.reserve_url_pc} target="_blank" rel="noopener noreferrer">コースの予約はこちら</a>
+            <a href={plan.reserve_url_pc} target="_blank" rel="noopener noreferrer">コースの予約はこちら（残り<big>{plan.stock_count}</big> 枠）</a>
           </div>
         </div>
       </div>
