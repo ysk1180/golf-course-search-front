@@ -50,6 +50,7 @@ const Search = ({ date, budget, departure, duration, onFormSubmit, changeState }
                 <option value="2">吉祥寺駅</option>
                 <option value="3">赤羽駅</option>
                 <option value="4">錦糸町駅</option>
+                <option value="7">飯田橋駅</option>
                 <option value="5">川崎駅（神奈川県）</option>
                 <option value="6">川越駅（埼玉県）</option>
               </select>
