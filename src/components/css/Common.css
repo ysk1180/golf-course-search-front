@@ -43,6 +43,10 @@
   margin: 20px;
 }
 
+.start_time_checkbox {
+  padding-right: 16px;
+}
+
 /*Result*/
 .item {
   margin-bottom: 10px;
