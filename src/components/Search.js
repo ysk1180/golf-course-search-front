@@ -6,9 +6,27 @@ import './css/Common.css';
 import './css/Reset.css';
 import "react-datepicker/dist/react-datepicker.css"
 
-const Search = ({ date, budget, departure, duration, onFormSubmit, changeState }) => {
-    const Today = new Date();
-    registerLocale('ja', ja);
+const Search = ({ date, budget, startTime, departure, duration, onFormSubmit, changeState, changeStartTime }) => {
+  const Today = new Date();
+  registerLocale('ja', ja);
+
+  const startTimeList = ["6", "7", "8", "9", "1"]
+
+  const renderedStartTime = startTimeList.map((time) => {
+    let displayedTime = `${time}時台`
+    if (time === "6") {
+      displayedTime = "〜".concat(displayedTime)
+    } else if (time === "1") {
+      displayedTime = "10時台〜"
+    }
+
+    return (
+      <div className="ui checkbox start_time_checkbox" key={time}>
+        <input name="startTime" type="checkbox" checked={startTime.includes(time)} value={time} onChange={e => changeStartTime(e.target.value)}/>
+        <label>{displayedTime}</label>
+      </div>
+    )
+  });
 
   return (
     <>
@@ -42,6 +60,10 @@ const Search = ({ date, budget, departure, duration, onFormSubmit, changeState }
                 <option value="15000">15,000円</option>
                 <option value="16000">16,000円</option>
               </select>
+            </div>
+            <div className="field">
+              <label><i className="clock outline icon"></i>スタート時間（チェックしない場合、指定なし となります）</label>
+              {renderedStartTime}
             </div>
             <div className="field">
               <label><i className="map pin icon"></i>移動時間計算の出発地点（自宅から近い地点をお選びください）</label>
