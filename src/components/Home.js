@@ -15,7 +15,7 @@ import Result from './Result.js';
 import Search from './Search.js';
 
 class Home extends React.Component {
-  state = { date: addDays(new Date(), 14), budget: '12000', startTime: [], departure: '1', duration: '90', loading: false, error: '', plans: null, planCount: 0, planSortType: 'sortDuration' }
+  state = { date: addDays(new Date(), 14), budget: '12000', startTime: [], departure: '1', duration: '90', practiceField: false, cart: false, lunch: false, loading: false, error: '', plans: null, planCount: 0, planSortType: 'sortDuration' }
 
   onFormSubmit = async (event) => {
     try {
@@ -24,7 +24,7 @@ class Home extends React.Component {
 
       const formatedStartTime = this.state.startTime.length === 0 ? "0" : this.state.startTime.join('')
       const response = await axios.get('https://ttdbfb2924.execute-api.ap-northeast-1.amazonaws.com/production/fetch-golf-plans?', {
-        params: { date: format(this.state.date, 'yyyyMMdd'), budget: this.state.budget, startTime: formatedStartTime, departure: this.state.departure, duration: this.state.duration }
+        params: { date: format(this.state.date, 'yyyyMMdd'), budget: this.state.budget, startTime: formatedStartTime, practiceField: this.state.practiceField, cart: this.state.cart, lunch: this.state.lunch, departure: this.state.departure, duration: this.state.duration }
       });
       this.setState({ planCount: response.data.count, plans: response.data.plans })
     } catch (e) {
@@ -58,6 +58,9 @@ class Home extends React.Component {
                   startTime={this.state.startTime}
                   departure={this.state.departure}
                   duration={this.state.duration}
+                  practiceField={this.state.practiceField}
+                  cart={this.state.cart}
+                  lunch={this.state.lunch}
                   onFormSubmit={this.onFormSubmit}
                   changeState={this.changeState}
                   changeStartTime={this.changeStartTime}

@@ -6,7 +6,7 @@ import './css/Common.css';
 import './css/Reset.css';
 import "react-datepicker/dist/react-datepicker.css"
 
-const Search = ({ date, budget, startTime, departure, duration, onFormSubmit, changeState, changeStartTime }) => {
+const Search = ({ date, budget, startTime, departure, duration, practiceField, cart, lunch, onFormSubmit, changeState, changeStartTime }) => {
   const Today = new Date();
   registerLocale('ja', ja);
 
@@ -21,7 +21,7 @@ const Search = ({ date, budget, startTime, departure, duration, onFormSubmit, ch
     }
 
     return (
-      <div className="ui checkbox start_time_checkbox" key={time}>
+      <div className="ui checkbox search_checkbox" key={time}>
         <input name="startTime" type="checkbox" checked={startTime.includes(time)} value={time} onChange={e => changeStartTime(e.target.value)}/>
         <label>{displayedTime}</label>
       </div>
@@ -32,7 +32,7 @@ const Search = ({ date, budget, startTime, departure, duration, onFormSubmit, ch
     <>
       <div className="ui container" id="container">
         <div className="top_description">
-          <p><i className="golf ball icon"></i>プレー日、上限金額の項目に加えて、「ゴルフ場までの移動時間」でもゴルフ場を絞り込むことができ、ゴルフ場探しを簡単にします。楽に行けるゴルフ場を予約してゴルフを楽しみましょう。</p>
+          <p><i className="golf ball icon"></i>プレー日、上限金額などの項目に加えて、「ゴルフ場までの移動時間」でもゴルフ場を絞り込むことができ、ゴルフ場探しを簡単にします。楽に行けるゴルフ場を予約してゴルフを楽しみましょう。</p>
         </div>
         <div className="Search__Form">
           <form className="ui form segment" onSubmit={onFormSubmit}>
@@ -93,6 +93,21 @@ const Search = ({ date, budget, startTime, departure, duration, onFormSubmit, ch
                 <option value="140">140分</option>
                 <option value="150">150分</option>
               </select>
+            </div>
+            <div className="field">
+              <label><i className="utensil spoon icon"></i>その他条件（チェックしない場合、指定なし となります）</label>
+              <div className="ui checkbox search_checkbox">
+                <input name="practiceField" type="checkbox" checked={practiceField} onChange={() => changeState('practiceField', !practiceField)}/>
+                <label>練習場あり</label>
+              </div>
+              <div className="ui checkbox search_checkbox">
+                <input name="cart" type="checkbox" checked={cart} onChange={() => changeState('cart', !cart)}/>
+                <label>乗用カートあり</label>
+              </div>
+              <div className="ui checkbox search_checkbox">
+                <input name="lunch" type="checkbox" checked={lunch} onChange={() => changeState('lunch', !lunch)}/>
+                <label>昼食付き</label>
+              </div>
             </div>
             <div className="Search__Button">
               <button type="submit" className="Search__Button__Design">
