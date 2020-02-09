@@ -32,7 +32,7 @@ const Search = ({ date, budget, startTime, departure, duration, practiceField, c
     <>
       <div className="ui container" id="container">
         <div className="top_description">
-          <p><i className="golf ball icon"></i>プレー日、上限金額などの項目に加えて、「ゴルフ場までの移動時間」でもゴルフ場を絞り込むことができ、ゴルフ場探しを簡単にします。楽に行けるゴルフ場を予約してゴルフを楽しみましょう。</p>
+          <p><i className="golf ball icon"></i>ゴルフ場までの移動時間でゴルフ場を検索して、簡単に予約することができます。楽に行けるゴルフ場を予約してゴルフを楽しもう！</p>
         </div>
         <div className="Search__Form">
           <form className="ui form segment" onSubmit={onFormSubmit}>
