@@ -126,12 +126,20 @@
 
 .item-button {
   display: inline-block;
-  padding: 10px 8px 10px 16px;
-  margin: 16px 5px 8px;
+  padding: 10px 24px 10px 32px;
+  margin: 16px 0 4px 0;
   background: #F1647A;
   border: #F1647A;
   border-radius: 4px;
   font-weight: bold;
+}
+
+.item-button-area {
+  display: flex;
+}
+
+.item-link {
+  margin: 0 auto;
 }
 
 /* loading */
@@ -162,4 +170,9 @@
   left: 50%;
   transform: translateY(-50%) translateX(-50%);
   text-align: center;
+}
+
+/* footer */
+.footer-link {
+  padding: 2px 0 14px 0!important;
 }

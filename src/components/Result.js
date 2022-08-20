@@ -79,8 +79,10 @@ const Result = ({ plans, error, planCount, planSortType, changeState }) => {
           <div className="description">
             <p>{plan.caption}</p>
           </div>
-          <div className="item-button">
-            <a href={plan.reserve_url_pc} target="_blank" rel="noopener noreferrer">楽天GORAで予約（残り<big>{plan.stock_count}</big> 枠）</a>
+          <div className="item-button-area">
+            <a href={plan.reserve_url_pc} target="_blank" rel="noopener noreferrer" className="item-link">
+              <div className="item-button">楽天GORAで予約（残り<big>{plan.stock_count}</big> 枠）<i className="external alternate icon"></i></div>
+            </a>
           </div>
         </div>
       </div>
