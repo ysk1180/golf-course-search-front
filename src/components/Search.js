@@ -30,14 +30,14 @@ const Search = ({ date, budget, startTime, departure, duration, practiceField, c
 
   return (
     <>
-      <div className="ui container" id="container">
+      <div>
         <div className="top_description">
-          <p><i className="golf ball icon"></i>ゴルフ場までの移動時間でゴルフ場を検索して、簡単に予約することができます。楽に行けるゴルフ場を予約してゴルフを楽しもう！</p>
+          <p><i className="golf ball icon top-description-icon"></i>車での移動時間が短いゴルフ場を検索できます！</p>
         </div>
         <div className="Search__Form">
           <form className="ui form segment" onSubmit={onFormSubmit}>
             <div className="field">
-              <label><i className="calendar alternate outline icon"></i>プレー日</label>
+              <label><i className="calendar alternate outline icon search-form-icon"></i>プレー日</label>
               <DatePicker
                 dateFormat="yyyy/MM/dd"
                 locale='ja'
@@ -47,7 +47,7 @@ const Search = ({ date, budget, startTime, departure, duration, practiceField, c
               />
             </div>
             <div className="field">
-              <label><i className="yen sign icon"></i>上限金額</label>
+              <label><i className="yen sign icon search-form-icon"></i>上限金額</label>
               <select className="ui dropdown" name="dropdown" value={budget} onChange={e => changeState('budget', e.target.value)}>
                 <option value="7000">7,000円</option>
                 <option value="8000">8,000円</option>
@@ -62,11 +62,13 @@ const Search = ({ date, budget, startTime, departure, duration, practiceField, c
               </select>
             </div>
             <div className="field">
-              <label><i className="clock outline icon"></i>スタート時間（チェックしない場合、指定なし となります）</label>
+              <label><i className="clock outline icon search-form-icon"></i>スタート時間</label>
+              <span>※ チェックしない場合、指定なし となります</span>
               {renderedStartTime}
             </div>
             <div className="field">
-              <label><i className="map pin icon"></i>移動時間計算の出発地点（自宅から近い地点をお選びください）</label>
+              <label><i className="map pin icon search-form-icon"></i>移動時間計算の出発地点</label>
+              <span>※ 自宅から近い地点をお選びください</span>
               <select className="ui dropdown" name="dropdown" value={departure} onChange={e => changeState('departure', e.target.value)}>
                 <option value="1">二子玉川駅</option>
                 <option value="2">吉祥寺駅</option>
@@ -80,7 +82,7 @@ const Search = ({ date, budget, startTime, departure, duration, practiceField, c
               </select>
             </div>
             <div className="field">
-              <label><i className="car icon"></i>車での移動時間の上限</label>
+              <label><i className="car icon search-form-icon"></i>車での移動時間の上限</label>
               <select className="ui dropdown" name="dropdown" value={duration} onChange={e => changeState('duration', e.target.value)}>
                 <option value="60">60分</option>
                 <option value="70">70分</option>
@@ -95,7 +97,8 @@ const Search = ({ date, budget, startTime, departure, duration, practiceField, c
               </select>
             </div>
             <div className="field">
-              <label><i className="utensil spoon icon"></i>その他条件（チェックしない場合、指定なし となります）</label>
+              <label><i className="utensil spoon icon search-form-icon"></i>その他条件</label>
+              <span>※ チェックしない場合、指定なし となります</span>
               <div className="ui checkbox search_checkbox">
                 <input name="practiceField" type="checkbox" checked={practiceField} onChange={() => changeState('practiceField', !practiceField)}/>
                 <label>練習場あり</label>

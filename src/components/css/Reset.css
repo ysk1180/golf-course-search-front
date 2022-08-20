@@ -37,7 +37,12 @@ footer {
 }
 
 .footer {
-  background: #80C544!important;
+  background: white!important;
+  color: gray;
+}
+
+.footer a {
+  color: gray;
 }
 
 /**
@@ -90,7 +95,6 @@ pre {
  */
 
 a {
-  color: #F3F1DB!important;
   margin: 0 10px;
   background-color: transparent;
 }
