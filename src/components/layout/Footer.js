@@ -11,9 +11,9 @@ const Footer = () => {
               <span><a href="https://twitter.com/ysk_pro" target="_blank" rel="noopener noreferrer"><i className="twitter square icon"></i>ゆうすけ</a></span>
               <span><a href="https://twitter.com/rails_java_like" target="_blank" rel="noopener noreferrer"><i className="twitter square icon"></i>宮水</a></span>
             </div>
-            <div className="twelve wide column">
+            <div className="footer-link">
               <p className="ui">
-                <a href="https://golf-medley.com/" target="_blank" rel="noopener noreferrer" style={{ marginLeft: 0 }}>Golf Medley（ゴルフ練習場口コミサイト） <i className="external alternate icon"></i></a>
+                <a href="https://golf-medley.com/" target="_blank" rel="noopener noreferrer" style={{ marginLeft: 0 }}>姉妹サイト：Golf Medley（ゴルフ口コミサイト） <i className="external alternate icon"></i></a>
               </p>
             </div>
           </div>
