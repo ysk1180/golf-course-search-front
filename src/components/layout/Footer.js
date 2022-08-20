@@ -13,7 +13,7 @@ const Footer = () => {
             </div>
             <div className="twelve wide column">
               <p className="ui">
-                <a href="https://golf-medley.com/" target="_blank" rel="noopener noreferrer" style={{ marginLeft: 0 }}>Golf Medley（ゴルフ練習場口コミサイト） <i class="external alternate icon"></i></a>
+                <a href="https://golf-medley.com/" target="_blank" rel="noopener noreferrer" style={{ marginLeft: 0 }}>Golf Medley（ゴルフ練習場口コミサイト） <i className="external alternate icon"></i></a>
               </p>
             </div>
           </div>
