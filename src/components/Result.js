@@ -48,33 +48,31 @@ const Result = ({ plans, error, planCount, planSortType, changeState }) => {
 
   const results = plans.map(plan => {
     return (
-      <div className="item" key={plan.plan_id}>
+      <div className="item result-item" key={plan.plan_id}>
         <div className="image">
           <img src={plan.image_url} alt={plan.course_name} />
         </div>
-        <div className="content">
+        <div className="content result-content">
           <div className="meta">
-            <span className="cinema">{plan.course_name}</span>
+            <span className="cinema">{plan.course_name}<span className="result-prefecture">{plan.prefecture}</span></span>
             <div className="ui mini statistics">
               <div className="statistic">
-                <div className="value">
-                  <i className="car icon"></i> {plan.duration + '分'}
+                <div className="result-value">
+                  <i className="car icon result-icon"></i> {plan.duration + '分'}
                 </div>
               </div>
               <div className="statistic">
-                <div className="value">
-                  <i className="yen sign icon"></i> {plan.price.toLocaleString()}
+                <div className="result-value">
+                  <i className="yen sign icon result-icon"></i> {plan.price.toLocaleString()}
                 </div>
               </div>
               <div className="statistic">
-                <div className="value">
-                  <i className="thumbs up outline icon"></i> {plan.evaluation}
+                <div className="result-value">
+                  <i className="thumbs up outline icon result-icon"></i> {plan.evaluation}
                 </div>
               </div>
             </div>
-            <div className="ui star rating" data-rating="3"></div>
             <div className="extra">
-              <div className="ui label">{plan.prefecture}</div>
               <div className="ui label">{plan.plan_name}</div>
             </div>
           </div>
@@ -82,7 +80,7 @@ const Result = ({ plans, error, planCount, planSortType, changeState }) => {
             <p>{plan.caption}</p>
           </div>
           <div className="item-button">
-            <a href={plan.reserve_url_pc} target="_blank" rel="noopener noreferrer">コースの予約はこちら（残り<big>{plan.stock_count}</big> 枠）</a>
+            <a href={plan.reserve_url_pc} target="_blank" rel="noopener noreferrer">楽天GORAで予約（残り<big>{plan.stock_count}</big> 枠）</a>
           </div>
         </div>
       </div>

@@ -1,16 +1,29 @@
 /* Header */
 .ui.inverted.menu {
-  background: #80C544!important;
-  padding: 5px;
+  background: white!important;
+  padding: 4px;
+}
+
+.ui.menu img {
+  width: 130px!important;
 }
 
 .top_description {
-  margin: 70px 0 0 0
+  margin: 68px 0 0 0;
+  color: #333!important;
+}
+
+.icon.top-description-icon {
+  color: gray;
 }
 
 /* Form */
 .Search__Form {
-  margin: 20px 0 50px 0;
+  margin: 16px 0 50px 0;
+}
+
+.icon.search-form-icon {
+  color: #57abff;
 }
 
 .Search__Button {
@@ -21,16 +34,17 @@
   display: inline-block;
   max-width: 210px;
   text-align: left;
-  border: 2px solid #74CBCC;
+  border: 0;
   font-size: 16px;
-  color: #74CBCC;
+  color: white;
   text-decoration: none;
   font-weight: bold;
   padding: 16px 16px;
   border-radius: 4px;
   transition: .4s;
   background: #fff;
-  cursor:pointer
+  cursor: pointer;
+  background-color: #57abff;
 }
 
 .Search__Button__Design:active {
@@ -39,29 +53,71 @@
   color: #FFF;
 }
 
+.field label {
+  color: #333!important;
+}
+
+.field span {
+  display: block;
+  color: gray;
+  font-size: 13px;
+  margin: 0 0 8px 4px;;
+}
+
 .segment {
   margin: 20px;
 }
 
 .search_checkbox {
-  padding-right: 16px;
+  padding: 0 16px 8px 0;
 }
 
 /*Result*/
-.item {
-  margin-bottom: 10px;
+.item.result-item {
+  margin: 16px 0!important;
+  padding: 16px!important;
+  background-color: white!important;
+  border: 0px!important;
 }
 
 .ui.items:last-child {
-  margin: 40px;
+  margin: 20px 0;
+  padding-bottom: 32px;
 }
 
 .ui.items>.item a {
   color: #F3F1DB;
 }
 
+.icon.result-icon {
+  color: #57abff;
+}
+
+.description p {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3; /* 制限したい行数が3の場合 */
+  overflow: hidden;
+
+  font-size: 13px;
+  color: #333;
+}
+
 .cinema {
   font-size: 20px;
+  color: black;
+}
+
+.result-prefecture {
+  font-size: 16px;
+  color: gray;
+  margin-left: 8px;
+}
+
+.result-value {
+  font-size: 18px!important;
+  color: #333;
+  margin-top: 4px;
 }
 
 .item-buttons {
@@ -70,11 +126,12 @@
 
 .item-button {
   display: inline-block;
-  padding: 10px;
+  padding: 10px 8px 10px 16px;
   margin: 16px 5px 8px;
   background: #F1647A;
   border: #F1647A;
   border-radius: 4px;
+  font-weight: bold;
 }
 
 /* loading */

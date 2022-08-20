@@ -53,27 +53,29 @@ class Home extends React.Component {
         <Header />
 
         <main>
-          <Search date={this.state.date}
-                  budget={this.state.budget}
-                  startTime={this.state.startTime}
-                  departure={this.state.departure}
-                  duration={this.state.duration}
-                  practiceField={this.state.practiceField}
-                  cart={this.state.cart}
-                  lunch={this.state.lunch}
-                  onFormSubmit={this.onFormSubmit}
-                  changeState={this.changeState}
-                  changeStartTime={this.changeStartTime}
-          />
+          <div className="ui container" id="container">
+            <Search date={this.state.date}
+                    budget={this.state.budget}
+                    startTime={this.state.startTime}
+                    departure={this.state.departure}
+                    duration={this.state.duration}
+                    practiceField={this.state.practiceField}
+                    cart={this.state.cart}
+                    lunch={this.state.lunch}
+                    onFormSubmit={this.onFormSubmit}
+                    changeState={this.changeState}
+                    changeStartTime={this.changeStartTime}
+            />
 
-          <Loading loading={this.state.loading}/>
+            <Loading loading={this.state.loading}/>
 
-          <Result plans={this.state.plans}
-                  error={this.state.error}
-                  planCount={this.state.planCount}
-                  planSortType={this.state.planSortType}
-                  changeState={this.changeState}
-          />
+            <Result plans={this.state.plans}
+                    error={this.state.error}
+                    planCount={this.state.planCount}
+                    planSortType={this.state.planSortType}
+                    changeState={this.changeState}
+            />
+          </div>
         </main>
 
         <Footer />
