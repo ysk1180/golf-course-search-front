@@ -16,6 +16,7 @@ import Search from './Search.js';
 
 class Home extends React.Component {
   state = { date: addDays(new Date(), 14), budget: '12000', startTime: [], departure: '1', duration: '90', practiceField: false, cart: false, lunch: false, loading: false, error: '', plans: null, planCount: 0, planSortType: 'sortDuration' }
+  ref = React.createRef()
 
   onFormSubmit = async (event) => {
     try {
@@ -27,6 +28,8 @@ class Home extends React.Component {
         params: { date: format(this.state.date, 'yyyyMMdd'), budget: this.state.budget, startTime: formatedStartTime, practiceField: this.state.practiceField, cart: this.state.cart, lunch: this.state.lunch, departure: this.state.departure, duration: this.state.duration }
       });
       this.setState({ planCount: response.data.count, plans: response.data.plans })
+
+      this.ref.current.scrollIntoView({behavior: 'smooth'})
     } catch (e) {
       this.setState({ error: e })
     }
@@ -69,12 +72,14 @@ class Home extends React.Component {
 
             <Loading loading={this.state.loading}/>
 
-            <Result plans={this.state.plans}
-                    error={this.state.error}
-                    planCount={this.state.planCount}
-                    planSortType={this.state.planSortType}
-                    changeState={this.changeState}
-            />
+            <div id="result-list" ref={this.ref}>
+              <Result plans={this.state.plans}
+                      error={this.state.error}
+                      planCount={this.state.planCount}
+                      planSortType={this.state.planSortType}
+                      changeState={this.changeState}
+              />
+            </div>
           </div>
         </main>
 
