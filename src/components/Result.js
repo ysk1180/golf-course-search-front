@@ -55,7 +55,7 @@ const Result = ({ plans, error, planCount, planSortType, changeState }) => {
         <div className="content result-content">
           <div className="meta">
             <span className="cinema">{plan.course_name}<span className="result-prefecture">{plan.prefecture}</span></span>
-            <div className="ui mini statistics">
+            <div className="ui mini statistics result-key-info">
               <div className="statistic">
                 <div className="result-value">
                   <i className="car icon result-icon"></i> {plan.duration + '分'}
